@@ -10,4 +10,19 @@ class Project extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'title',
+        'slug',
+        'short_description',
+        'project_url',
+        'repo_url',
+        'packagist_url',
+        'description'
+    ];
 }
