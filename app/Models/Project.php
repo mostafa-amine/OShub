@@ -25,4 +25,10 @@ class Project extends Model
         'packagist_url',
         'description'
     ];
+
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
