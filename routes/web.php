@@ -17,6 +17,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Project Routes
+Route::get('/' , [ProjectController::class , 'index']);
+Route::get('/projects/create' , [ProjectController::class , 'create']);
+Route::post('/projects' , [ProjectController::class , 'store']);
+Route::get('/projects/{id}/edit' , [ProjectController::class , 'edit']);
+Route::post('/projects/{id}' , [ProjectController::class , 'update']);
+Route::delete('users/{id}', [ProjectController::class , 'destroy']);
+
+Route::get('/projects/{slug}' , [ProjectController::class , 'show']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
