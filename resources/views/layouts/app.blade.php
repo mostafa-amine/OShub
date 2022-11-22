@@ -20,9 +20,9 @@
     <div id="app">
         <x-layouts.navbar></x-layouts.navbar>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+        <main>
+            {{ $content }}
+        </main>
 
         <x-layouts.footer></x-layouts.footer>
     </div>
