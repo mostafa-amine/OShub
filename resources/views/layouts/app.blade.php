@@ -13,8 +13,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
 </head>
 <body>
     <div id="app">
@@ -26,5 +25,10 @@
 
         <x-layouts.footer></x-layouts.footer>
     </div>
+
+
+
+
+    <script src="{{ asset('bootstrap/js/bootstrap.js') }}"></script>
 </body>
 </html>
