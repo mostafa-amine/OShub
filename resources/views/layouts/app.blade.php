@@ -17,9 +17,10 @@
 </head>
 <body>
     <div id="app">
-        <x-layouts.navbar></x-layouts.navbar>
+    <x-layouts.navbar></x-layouts.navbar>
 
-        <main>
+    <main>
+    <div id="app">
             {{ $content }}
         </main>
 
