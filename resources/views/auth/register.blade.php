@@ -1,6 +1,6 @@
-@extends('layouts.app')
+<x-layouts.app title="Register">
 
-@section('content')
+<x-slot:content>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -74,4 +74,5 @@
         </div>
     </div>
 </div>
-@endsection
+</x-slot:content>
+</x-layouts.app>
