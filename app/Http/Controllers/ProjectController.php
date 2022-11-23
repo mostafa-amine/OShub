@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
+    // define middleware
+    public function __construct()
+    {
+        $this->middleware('auth')->only('create' , 'store' , 'edit' , 'update');
+    }
     public function index()
     {
         $articles = DB::table('projects')->get();
