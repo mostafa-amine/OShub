@@ -20,8 +20,8 @@ Route::get('/', function () {
 
 // Project Routes
 Route::get('/' , [ProjectController::class , 'index']);
-Route::get('/projects/create' , [ProjectController::class , 'create']);
-Route::post('/projects' , [ProjectController::class , 'store']);
+Route::get('/projects/create' , [ProjectController::class , 'create'])->name('submit-project');
+Route::post('/projects' , [ProjectController::class , 'store'])->name('store-project');
 Route::get('/projects/{id}/edit' , [ProjectController::class , 'edit']);
 Route::post('/projects/{id}' , [ProjectController::class , 'update']);
 Route::delete('users/{id}', [ProjectController::class , 'destroy']);
