@@ -26,7 +26,8 @@ Route::get('/projects/{id}/edit' , [ProjectController::class , 'edit']);
 Route::post('/projects/{id}' , [ProjectController::class , 'update']);
 Route::delete('users/{id}', [ProjectController::class , 'destroy']);
 
-Route::get('/projects/{slug}' , [ProjectController::class , 'show']);
+// Users
+Route::get('user/{user:user_name?}', [ProfileController::class, 'show'])->name('profile');
 
 Auth::routes();
 
