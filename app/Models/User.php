@@ -42,8 +42,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function Projects()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function latestProjects(int $amount = 10)
+    {
+        return $this->Projects()->limit($amount)->get();
+    }
+
+    public function username(): string
+    {
+        return $this->user_name;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
     }
 }
