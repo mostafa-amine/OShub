@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
 </head>
 <body>
-    <div id="app">
     <x-layouts.navbar></x-layouts.navbar>
 
     <main>
