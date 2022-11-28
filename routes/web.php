@@ -8,14 +8,17 @@ use App\Http\Controllers\ProjectController;
 // Home
 Route::get('/' , [HomeController::class , 'show'])->name('home');
 
-// Project
-Route::get('/' , [ProjectController::class , 'index']);
-Route::get('/projects/create' , [ProjectController::class , 'create'])->name('submit-project');
-Route::post('/projects' , [ProjectController::class , 'store'])->name('store-project');
-Route::get('/projects/{id}/edit' , [ProjectController::class , 'edit']);
-Route::post('/projects/{id}' , [ProjectController::class , 'update']);
-Route::delete('users/{id}', [ProjectController::class , 'destroy']);
-Route::get('/projects/{slug:slug}' , [ProjectController::class , 'show']);
+// Projects
+Route::prefix('projects')->group(function() {
+    Route::get('authored' , AuthoredProjects::class);
+    Route::get('create' , [ProjectController::class , 'create'])->name('projects.create');
+    Route::post('/' , [ProjectController::class , 'store'])->name('projects.store');
+    Route::get('{project}/edit' , [ProjectController::class , 'edit'])->name('projects.edit');
+    Route::post('{project}' , [ProjectController::class , 'update'])->name('projects.update');
+    Route::delete('{project}', [ProjectController::class , 'destroy'])->name('projects.destroy');
+    Route::get('{project:slug}' , [ProjectController::class , 'show'])->name('projects.show');
+});
+
 
 // Users
 Route::get('user/{user:user_name?}', [ProfileController::class, 'show'])->name('profile');
