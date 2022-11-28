@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('project_tags', function (Blueprint $table) {
-            $table->foreignId('project_tag')->constrained('projects');
-            $table->foreignId('tag_id')->constrained('tags');
+        Schema::create('project_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('project_tag')->constrained('projects')->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained('tags')->cascadeOnDelete();
             $table->timestamps();
         });
     }
