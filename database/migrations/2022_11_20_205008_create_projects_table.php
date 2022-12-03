@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('repo_url')->unique();
             $table->string('packagist_url')->nullable();
             $table->text('description');
+            $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
             $table->softDeletes();
         });
