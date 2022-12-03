@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProject;
+use App\Models\Project;
+use App\Models\User;
+use App\Services\ProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,26 +16,30 @@ class ProjectController extends Controller
     {
         $this->middleware('auth')->only('create' , 'store' , 'edit' , 'update');
     }
-    public function index()
+
+
+    # Route Model Binding
+    public function show(Project $project)
     {
-        $articles = DB::table('projects')->get();
-        return view('index' , ['articles' => $articles]);
+        return view('projects.show' , compact('project'));
     }
 
-    public function show($slug)
-    {
-
-    }
-
+    # Returns Create Project View
     public function create()
     {
-
+        return view('projects.create');
     }
 
-    public function store(Request $request)
+    /**
+     * Use StoreProject Request to validate the request
+     * Use ProjectService to store the project on the database
+    */
+    public function store(StoreProject $request , ProjectService $project)
     {
-
+        $project->StoreProject($request);
+        return redirect()->route('home')->with('success' , 'Project Created Succefully');
     }
+
 
     public function edit($id)
     {
@@ -47,5 +55,5 @@ class ProjectController extends Controller
     {
 
     }
-    
+
 }
