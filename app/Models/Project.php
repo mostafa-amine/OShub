@@ -26,7 +26,8 @@ class Project extends Model
         'project_url',
         'repo_url',
         'packagist_url',
-        'description'
+        'description',
+        'user_id'
     ];
 
 
@@ -40,8 +41,8 @@ class Project extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    public function GetAllProjects()
+    public function GetProjects($PerPage = 10)
     {
-        return $this->all();
+        return $this->orderBy('created_at' , 'desc')->paginate($PerPage);
     }
 }
