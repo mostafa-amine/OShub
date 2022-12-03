@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthoredProjects;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -18,6 +20,7 @@ Route::prefix('projects')->group(function() {
     Route::delete('{project}', [ProjectController::class , 'destroy'])->name('projects.destroy');
     Route::get('{project:slug}' , [ProjectController::class , 'show'])->name('projects.show');
 });
+
 
 
 // Users
