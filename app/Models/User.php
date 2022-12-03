@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,6 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'user_name',
         'email',
         'password',
     ];
@@ -43,14 +45,14 @@ class User extends Authenticatable
     ];
 
 
-    public function Projects()
+    public function projects()
     {
         return $this->hasMany(Project::class);
     }
 
-    public function latestProjects(int $amount = 10)
+    public function latestProjects()
     {
-        return $this->Projects()->limit($amount)->get();
+        return $this->Projects()->get();
     }
 
     public function username(): string
