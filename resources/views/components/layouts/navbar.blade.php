@@ -29,11 +29,11 @@
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="btn btn-success" href="{{ route('submit-project') }}">{{ __('Submit Project') }}</a>
+                        <a class="btn btn-success" href="{{ route('projects.create') }}">{{ __('Submit Project') }}</a>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="btn btn-success" href="{{ route('submit-project') }}">{{ __('Submit Project') }}</a>
+                        <a class="btn btn-success" href="{{ route('projects.create') }}">{{ __('Submit Project') }}</a>
                     </li>
 
 
