@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreProject;
-use App\Models\Project;
 use App\Models\User;
-use App\Services\ProjectService;
+use App\Models\Project;
 use Illuminate\Http\Request;
+use App\Services\ProjectService;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreProject;
+use Illuminate\Support\Facades\Gate;
 
 class ProjectController extends Controller
 {
@@ -46,9 +47,11 @@ class ProjectController extends Controller
 
     }
 
-    public function update(Request $request)
+    public function update(Request $request , Project $project)
     {
-
+        if (! Gate::allows('update-post', $project)) {
+            abort(403);
+        }
     }
 
     public function destroy()
