@@ -4,10 +4,11 @@ namespace App\Services;
 
 use App\Models\Project;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class ProjectService
 {
-    public function StoreProject($request)
+    public function StoreProject(Request $request)
     {
         $project = Project::create([
             'title' => $request->title,
@@ -20,4 +21,6 @@ class ProjectService
             'user_id' => $request->user()->id
         ]);
     }
+
+    
 }
