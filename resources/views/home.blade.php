@@ -3,8 +3,7 @@
         <x-search>
         </x-search>
 
-        <x-project.all-projects :projects="$projects">
-        </x-project.all-projects>
+        <livewire:project.all-projects :projects="$projects" />
 
     </x-slot:content>
 </x-layouts.app>
