@@ -43,6 +43,11 @@ class Project extends Model
 
     public function GetProjects($PerPage = 10)
     {
-        return $this->orderBy('created_at' , 'desc')->paginate($PerPage);
+        return $this->orderBy('created_at' , 'desc')->get();
+    }
+
+    public function findProjectWithTags($id)
+    {
+        return $this->findOrFail($id)->tags()->get();
     }
 }
