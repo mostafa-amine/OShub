@@ -22,6 +22,8 @@ class ProjectController extends Controller
     # Route Model Binding
     public function show(Project $project)
     {
+        // show project Tags
+        $project_tags = $project->tags()->get();
         return view('projects.show' , compact('project'));
     }
 
@@ -52,6 +54,10 @@ class ProjectController extends Controller
         if (! Gate::allows('update-post', $project)) {
             abort(403);
         }
+
+        // Get The project Tags
+        $project_tags = $project->findProjectWithTags($project);
+
     }
 
     public function destroy()
