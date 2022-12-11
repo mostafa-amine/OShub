@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthoredProjects;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthoredProjects;
+use App\Http\Controllers\GithubController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 
@@ -27,3 +28,8 @@ Route::prefix('projects')->group(function() {
 Route::get('user/{user:user_name?}', [ProfileController::class, 'show'])->name('profile');
 
 Auth::routes();
+
+
+// Social Authentification
+Route::get('/login/github', [GithubController::class , 'redirectToProvider'])->name('login.github');
+Route::get('/auth/github', [GithubController::class , 'handleProviderCallback']);
