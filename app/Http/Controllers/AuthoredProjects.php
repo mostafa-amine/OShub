@@ -21,11 +21,8 @@ class AuthoredProjects extends Controller
      */
     public function __invoke(Request $request , User $user)
     {
-        // using mysql stored procedures
-        // $user_projects = $user->UserProjects(Auth::id());
-
         // Using Eloquent ORM
-        $projects = $request->user()->projects();
+        $projects = $user->UserProjects(11);
         return view('users.projects' , compact('projects'));
     }
 }

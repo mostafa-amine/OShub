@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function UserProjects($user_id)
     {
-        return DB::select('call getUserProject(?)' , [$user_id]);
+        return $this->find($user_id)->projects()->get();
     }
 
     public function username(): string
