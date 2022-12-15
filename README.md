@@ -1,7 +1,7 @@
 
-# Submit-it
+# OSHub
 
-Submit-it is an open source project built with [Laravel](https://laravel.com/) that allows users to share their own open source projects with the community.
+Open Source Hub is an open source project built with [Laravel](https://laravel.com/) that allows users to share their own open source projects with the community.
 
 ## Features
 
