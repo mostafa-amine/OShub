@@ -21,7 +21,7 @@ Open Source Hub is an open source project built with [Laravel](https://laravel.c
 
 ## Installation
 
-1.  Clone the repository: `git clone https://github.com/mostafa-amine/submit-it.git`
+1.  Clone the repository: `git clone https://github.com/mostafa-amine/OShub.git`
 2.  Install dependencies: `composer install`
 3.  Create a MySQL database and clone `.env.example` to  `.env` file with the database credentials
 4.  Generate an application key: `php artisan key:generate`
@@ -37,4 +37,4 @@ Then, visit [http://127.0.0.1:8000](http://127.0.0.1:8000/) in your web browser 
 
 ## Contributing
 
-We welcome contributions to Submit-it! Please feel free to submit a pull request with any changes you would like to see in the project.
+We welcome contributions to OShub! Please feel free to submit a pull request with any changes you would like to see in the project.
