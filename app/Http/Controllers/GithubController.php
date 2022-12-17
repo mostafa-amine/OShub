@@ -14,9 +14,24 @@ class GithubController extends Controller
 
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
-        dd($user);
-        // $user->token
+        $githubUser = Socialite::driver('github')->user();
+        $user = User::where('provider_id' , $githubUser->getId())->first();
+
+        if (!$user) {
+            $user = User::create([
+                'name' => $githubUser->getName(),
+                'user_name' => $githubUser->getNickname(),
+                'email' => $githubUser->getEmail(),
+                'password' => '',
+                'provider' => 'github',
+                'provider_id' => $githubUser->getId(),
+            ]);
+        }
+
+        auth()->login($user , true);
+
+        return redirect()->route('home');
+
     }
 
 }
