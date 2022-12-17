@@ -35,6 +35,8 @@ class UserProfile extends Component
         $user->user_name = Str::slug($this->uname , '-');
         $user->email = $this->email;
         $user->save();
+
+        redirect()->route('profile');
     }
 
 

@@ -31,6 +31,7 @@ class ChangePassword extends Component
             $user->save();
 
             session()->flash('success' , 'Password change');
+            redirect()->route('profile');
         }
         else
         {
