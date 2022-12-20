@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Projects;
 
 use App\Models\Project;
+use App\Models\Tag;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Validated;
@@ -16,6 +17,19 @@ class Create extends Component
     public $packagist;
     public $desc;
 
+    public $tags = '';
+    public $selectedTags = [];
+
+    public function mount()
+    {
+        $this->getAllTags();
+    }
+
+    public function getAllTags()
+    {
+        return $this->tags = Tag::all();
+    }
+
     protected $rules = [
             'title' => 'required',
             'short' => 'required',
@@ -23,15 +37,13 @@ class Create extends Component
             'repo' => 'required|url',
             'packagist' => 'required|url',
             'desc' => 'required',
+            'selectedTags' => 'required'
     ];
 
-    protected $messages = [
 
-    ];
     public function createProject()
     {
         $this->validate();
-
         $project = Project::create([
             'title' => $this->title,
             'slug' => Str::slug($this->title , '-'),
@@ -42,8 +54,18 @@ class Create extends Component
             'description' => $this->desc,
             'user_id' => auth()->user()->id
         ]);
+
+        
+        $this->storeTags($project->id);
+
         session()->flash('created' , 'Project Added ✨');
         redirect()->route('home');
+    }
+
+    public function storeTags($project_id)
+    {
+        $project = Project::find($project_id);
+        $project->tags()->attach($this->selectedTags);
     }
 
     public function render()
