@@ -17,7 +17,7 @@
             <label for="short" class="form-label">Project URL</label>
             <input type="text" wire:model="url" class="form-control" name="url" id="url" value="{{ old('url') }}" required placeholder="www.larablogs.tech">
             @error('url') <span class="error" style="color: red;">{{ $message }}</span> @enderror
-        </div>
+        </div> 
 
         <div class="mb-2">
             <label for="short" class="form-label">Repository URL</label>
@@ -35,6 +35,16 @@
             <label for="desc" class="form-label">Project Description</label>
             <textarea name="desc" wire:model="desc" id="desc" class="form-control" rows="5" required placeholder="This is a project that ...">{{ old('desc') }}</textarea>
             @error('desc') <span class="error" style="color: red;">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="mb-2">
+            <label for="tags">Select Tags</label>
+            <select id="tags" wire:model="selectedTags" class="form-select" multiple aria-label="multiple select example">
+                @foreach ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->tag }}</option>
+                @endforeach
+              </select>
+              @error('selectedTags') <span class="error" style="color: red;">{{ $message }}</span> @enderror
         </div>
 
         <div class="mb-2">
