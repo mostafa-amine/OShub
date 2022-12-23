@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\ProjectController;
-use App\Http\Controllers\ApiTokenController;
+use App\Http\Controllers\Api\ApiTokenController;
 
 /*
 |--------------------------------------------------------------------------
